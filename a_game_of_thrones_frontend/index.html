@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Throne Tracker</title>
+
+    <link rel="stylesheet" href="index.css">
+  </head>
+  <body>
+
+    <div id='throne-header'>
+      <img src="https://s3.amazonaws.com/peoplepng/wp-content/uploads/2018/08/31193013/Game-of-Thrones-Logo.png" alt="throne-header">
+    </div>
+
+    <div class="container">
+      <form id = "new-character" class="add-throne-form" style="">
+        <h3>Create a Character Post!</h3>
+
+        <input type="text" id="name" value="" placeholder="Enter a Character's name..." class="input-text">
+        <br>
+        <input type="text" id="image" value="" placeholder="Enter a Character's image URL..." class="input-text">
+        <br>
+				<input type="text" id="comment" value="" placeholder="Enter a Comment..." class="input-text">
+        <br>
+        <input type="submit" name="submit" value="Add Character" class="submit">
+      </form>
+    </div>
+    <p style='text-align:center' > Keep Speculating! <button id='new-throne-btn'>Add a new Character!</button></p>
+
+
+    <div id="throne-collection">
+    </div>
+
+
+    <script type="text/javascript" src="src/index.js"></script>
+  </body>
+</html>
