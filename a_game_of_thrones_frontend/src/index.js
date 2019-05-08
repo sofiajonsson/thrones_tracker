@@ -29,9 +29,16 @@ document.addEventListener('DOMContentLoaded', () => {
 			image.src = post.image
 			postDiv.appendChild(image)
 
-		let comment = document.createElement('p')
+		let div = document.createElement('div')
+			div.classList.add('editable')
+			postDiv.appendChild(div)
+
+		let ul = document.createElement('ul')
+		div.appendChild(ul)
+
+		let comment = document.createElement('li')
 			comment.textContent = post.comment
-			postDiv.appendChild(comment)
+			ul.appendChild(comment)
 
 		let deleteButton = document.createElement('button')
 			deleteButton.textContent = "Delete"
@@ -41,19 +48,22 @@ document.addEventListener('DOMContentLoaded', () => {
 				postDiv.remove()
 				deleteCharacterPost(post.id)
 			})
+
+			charcterPostForm.style.display = 'none'
+
 	}
 
 
 	function deleteCharacterPost(id){
+		console.log(id);
 		fetch(POSTS_URL + '/' + id, {
 			method: 'DELETE'
 		})
-		.then(res => res.json())
-			console.log('Deleted');
+	 .then(console.log("Item successfully deleted"))
 	}
 
 	function addNewCharacter(){
-		let topDiv = document.getElementById('throne-collection')
+		let topDiv = document.getElementById('new-character-container')
 
 		let newCharacterForm = document.getElementById('new-character')
 			newCharacterForm.addEventListener('submit', handleSubmit)
@@ -61,6 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	}
 
 	function handleSubmit(ev){
+		console.log("Happened?")
 		ev.preventDefault()
 		fetch(POSTS_URL, {
 		method: 'POST',
@@ -68,13 +79,13 @@ document.addEventListener('DOMContentLoaded', () => {
 			'Content-Type': 'application/json'
 		},
 		body: JSON.stringify({
-			name: document.getElementById('name'),
-			image: document.getElementById('image'),
-			comment: document.getElementById('comment')
+			name: document.getElementById('name').value,
+			image: document.getElementById('image').value,
+			comment: document.getElementById('comment').value
 	})
 })
 	.then(res => res.json())
-	.then(json =>showCharacterPosts(json))
+	.then(json => showCharacterPosts(json))
 }
 
 
@@ -82,14 +93,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	addBtn.addEventListener('click', () => {
 	    // hide & seek with the form
-	    addNewCharacter = !addNewCharacter
-	    if (addNewCharacter) {
+	    addCharacter = !addCharacter
+	    if (addCharacter) {
 	      charcterPostForm.style.display = 'block'
 	      // submit listener here
 	    } else {
 	      charcterPostForm.style.display = 'none'
 	    }
 	  })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
