@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			comment.textContent = post.comment
 			ul.appendChild(comment)
 
-		let deleteButton = document.createElement('button')
+		let deleteButton = document.createElement('right_button')
 			deleteButton.textContent = "Delete"
 			postDiv.appendChild(deleteButton)
 
@@ -48,9 +48,14 @@ document.addEventListener('DOMContentLoaded', () => {
 				postDiv.remove()
 				deleteCharacterPost(post.id)
 			})
+		let editButton = document.createElement('left_button')
+			editButton.textContent = "Edit"
+			postDiv.appendChild(editButton)
 
+			editButton.addEventListener('click', () => {
+				editCharacterPost(post.id)
+			})
 			charcterPostForm.style.display = 'none'
-
 	}
 
 
@@ -69,7 +74,32 @@ document.addEventListener('DOMContentLoaded', () => {
 			newCharacterForm.addEventListener('submit', handleSubmit)
 			topDiv.appendChild(newCharacterForm)
 	}
+	function editCharacterPost(id){
+		console.log(id);
+		fetch(POSTS_URL + '/' + id, {
+			method: 'PATCH',
+			headers: {
+				'Content-Type': 'application/json',
+				'Accept': 'application/json'
+			},
+			body: JSON.stringify({
+				name: document.getElementById('name').value,
+				image: document.getElementById('image').value,
+				comment: document.getElementById('comment').value
+			})
+		})
+		.then(res => res.json())
+		.then(json => showCharacterPosts(json))
+	 	.then(console.log("Item Edited"))
+	}
 
+	function addNewCharacter(){
+		let topDiv = document.getElementById('new-character-container')
+
+		let newCharacterForm = document.getElementById('new-character')
+			newCharacterForm.addEventListener('submit', handleSubmit)
+			topDiv.appendChild(newCharacterForm)
+	}
 	function handleSubmit(ev){
 		console.log("Happened?")
 		ev.preventDefault()
@@ -82,25 +112,25 @@ document.addEventListener('DOMContentLoaded', () => {
 			name: document.getElementById('name').value,
 			image: document.getElementById('image').value,
 			comment: document.getElementById('comment').value
-	})
-})
-	.then(res => res.json())
-	.then(json => showCharacterPosts(json))
-}
-
-
-
+			})
+		})
+		.then(res => res.json())
+		.then(json => showCharacterPosts(json))
+	 	document.getElementById('name').value = '',
+	 	document.getElementById('image').value = '',
+		document.getElementById('comment').value= ''
+	}
 
 	addBtn.addEventListener('click', () => {
-	    // hide & seek with the form
 	    addCharacter = !addCharacter
 	    if (addCharacter) {
 	      charcterPostForm.style.display = 'block'
-	      // submit listener here
 	    } else {
 	      charcterPostForm.style.display = 'none'
 	    }
 	  })
+
+
 
 
 

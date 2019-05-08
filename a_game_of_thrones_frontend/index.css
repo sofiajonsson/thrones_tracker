@@ -40,18 +40,37 @@ img {
   box-shadow: 3px 4px lightblue
 }
 
+.editable {
+  text-align: left;
+  height: 4rem;
+  resize: both;
+  overflow: auto;
+}
+
 .throne-avatar {
   justify-self: center;
   height: 12rem;
   width: auto;
 }
 
-button {
+left_button {
   position: relative;
   background-color: grey;
   border: none;
   border-radius: 5px;
-  height: 3rem;
+  height: max-content;
+  width: max-content;
+  color: whitesmoke;
+  font-size: 18px;
+  justify-self: center;
+}
+
+right_button {
+  position: relative;
+  background-color: grey;
+  border: none;
+  border-radius: 5px;
+  height: max-content;
   width: max-content;
   color: whitesmoke;
   font-size: 18px;
