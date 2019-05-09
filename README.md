@@ -19,7 +19,7 @@
 
 ## Project Requirements
 For our third Project at the Flatiron School were challenged to:
- 	1. Build a Single Page Application (SPA) using a Ruby on Rails backend and 		JavaScript frontend.
+	1. Build a Single Page Application (SPA) using a Ruby on Rails backend and 		JavaScript frontend.
 
 	2. Must be a HTML/CSS/JS frontend with a Rails API backend. These should live in two separate repositories. All interactions between the client and the server should be handled asynchronously (AJAX).
 
@@ -27,10 +27,10 @@ For our third Project at the Flatiron School were challenged to:
 
 	4. No user authentication with passwords. When the page refreshes the current user will effectively be signed out.
 
-## Time Allotted
+### Time Allotted
 4 days
 
-###License
+### License
 MIT License Copyright (c) 2019 Sofia Jonsson
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
