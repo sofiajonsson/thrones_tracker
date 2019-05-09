@@ -19,6 +19,7 @@
 
 ## Project Requirements
 For our third Project at the Flatiron School were challenged to:
+
 	1. Build a Single Page Application (SPA) using a Ruby on Rails backend and 		JavaScript frontend.
 
 	2. Must be a HTML/CSS/JS frontend with a Rails API backend. These should live in two separate repositories. All interactions between the client and the server should be handled asynchronously (AJAX).
