@@ -23,10 +23,12 @@ document.addEventListener('DOMContentLoaded', () => {
 			topDiv.appendChild(postDiv)
 
 		let name = document.createElement('h2')
+		name.setAttribute("id", `card-name-${post.id}`)
 			name.textContent = post.name
 			postDiv.appendChild(name)
 
 		let image = document.createElement('img')
+		image.setAttribute("id", `card-image-${post.id}`)
 			image.src = post.image
 			postDiv.appendChild(image)
 
@@ -39,6 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		div.appendChild(ul)
 
 		let comment = document.createElement('li')
+		comment.setAttribute("id", `card-comment-${post.id}`)
 			comment.textContent = post.comment
 			ul.appendChild(comment)
 
@@ -70,7 +73,6 @@ document.addEventListener('DOMContentLoaded', () => {
 		console.log(editForm.name);
 
 		editForm.addEventListener('submit', editHandleSubmit )
-	// debugger
 
 		let formName = document.getElementById('edit-name')
 		formName.value = post.name
@@ -84,12 +86,10 @@ document.addEventListener('DOMContentLoaded', () => {
 		formComment.value = post.comment
 	}
 
-// This is how we attached id to the form through the name 
+// This is how we attached id to the form through the name
 // fetch(POSTS_URL + '/' + ev.target.name
 
 	function editHandleSubmit(ev){
-		console.log();
-		debugger
 		console.log("Edit Handle Submitted?")
 		ev.preventDefault()
 		fetch(POSTS_URL + '/' + ev.target.name , {
@@ -106,8 +106,14 @@ document.addEventListener('DOMContentLoaded', () => {
 		.then(res => res.json())
 		.then(res => {
 			console.log(res)
+			//give each element an attribute with an id so you can specifically
+			//target that card
+			//pessimistic rendering
+			document.getElementById(`card-name-${res.id}`).textContent = res.name
+			document.getElementById(`card-image-${res.id}`).textContent = res.image
+			document.getElementById(`card-comment-${res.id}`).textContent = res.comment
 		})
-		.then(json => showCharacterPosts(json))
+		// .then(json => showCharacterPosts(json))
 	}
 
 	function deleteCharacterPost(id){
@@ -127,7 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	}
 
 	function handleSubmit(ev){
-		console.log("Happened?")
+		console.log("New Character Submitted?")
 		ev.preventDefault()
 		fetch(POSTS_URL, {
 		method: 'POST',
@@ -160,11 +166,11 @@ document.addEventListener('DOMContentLoaded', () => {
 		getCharacters()
 		addNewCharacter()
 
-		// let editForm = document.getElementById('edit-form')
-		// editForm.addEventListener( "submit", (ev) => {
-		// handleSubmit(ev)})
 	}
 
 	main()
 
 })
+
+//create another button and patch situation like the edit
+//change comments to be an array so i can iterate through
