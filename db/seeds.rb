@@ -1,5 +1,9 @@
 Post.destroy_all
 
+
+
+
+
 puts "Seeding Posts..."
 p1 = Post.create(name: "Jon Snow", image: "https://pbs.twimg.com/profile_images/901947348699545601/hqRMHITj_400x400.jpg", comment: "Jon Snow of House Stark, first of his name, King in the North, King Beyond the Wall, Lord of Winterfell, the White Wolf, the Undead"),
 p2 = Post.create(name: "Daenerys Targaryen", image: "https://www.hindustantimes.com/rf/image_size_960x540/HT/p2/2017/06/07/Pictures/_0a06e520-4b9c-11e7-81ca-1a4d4992589d.PNG", comment: "Daenerys Stormborn of the House Targaryen,First of Her Name, the Unburnt, Queen of the Andals and the First Men, Khaleesi of the Great Grass Sea,Breaker of Chains, and Mother of Dragons."),
