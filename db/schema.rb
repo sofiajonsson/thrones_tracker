@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2019_05_07_161850) do
   create_table "posts", force: :cascade do |t|
     t.string "name"
     t.string "image"
-    t.string "comment"
+    t.textarea "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

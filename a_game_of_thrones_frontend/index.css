@@ -24,6 +24,7 @@ img {
 #throne-collection {
   margin: 2rem;
 }
+
 .image {
   width: 7rem;
   height auto;
@@ -51,6 +52,17 @@ img {
   justify-self: center;
   height: 12rem;
   width: auto;
+}
+mid_button {
+  position: relative;
+  background-color: grey;
+  border: none;
+  border-radius: 5px;
+  height: max-content;
+  width: max-content;
+  color: whitesmoke;
+  font-size: 18px;
+  justify-self: center;
 }
 
 left_button {
@@ -91,6 +103,14 @@ button:hover {
   background: lightblue;
   opacity: .8;
 }
+/* .edit-container {
+  padding: 1rem;
+  width: stretch;
+  height: auto;
+  display: none;
+  background: lightblue;
+  opacity: .8;
+} */
 
 .add-throne-form {
   width: 80%

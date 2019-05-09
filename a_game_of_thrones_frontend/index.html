@@ -19,7 +19,6 @@
     <div id="new-character-container" class="container">
       <form id = "new-character" class="add-throne-form" style="">
         <h3>Create a New Character Post!</h3>
-
         <input type="text" id="name" value="" placeholder="Enter a Character's name..." class="input-text">
         <br>
         <input type="text" id="image" value="" placeholder="Enter a Character's image URL..." class="input-text">
@@ -35,19 +34,28 @@
     <div id="throne-collection">
     </div>
 
-    <div class="search">
-            <h4 class='center'>Edit Character</h4>
-            <form id='edit-form' class="padding margin border-round border-grey">
-              <input type="text" id="edit-name" value="" placeholder="Edit a Character's name..." class="input-text">
-              <br>
-              <input type="text" id="edit-image" value="" placeholder="Edit a Character's image URL..." class="input-text">
-              <br>
-              <input type="text" id="edit-comment" value="" placeholder="Edit a Comment..." class="input-text">
-              <br>
-              <input type="submit" id ="edit-submit" name="edit-submit" value="Add Character" class="submit">
-            </form>
+    <div id="new-comment-container">
+      <form id="comment-form">
+        <label for="add-comment-input"> <h4>Create a New Comment</h4></label>
+            <label for="add-comment-input"></label>
+            <input class="form-control" type="text" id="add-comment-input" />
+            <button class="btn-btn-success-buttons" type="submit" name="comment-button">Create comment</button>
+          </form>
     </div>
 
+    <div id="edit-character-container" class="edit-container">
+      <form id='edit-form' class="padding margin border-round border-grey">
+        <h4 class='center'>Edit Your Character</h4>
+        <input type="text" id="edit-name" value="" placeholder="Edit a Character's name..." class="input-text">
+        <br>
+        <input type="text" id="edit-image" value="" placeholder="Edit a Character's image URL..." class="input-text">
+        <br>
+        <input type="textarea" id="edit-comment" value="" placeholder="Edit a Comment..." class="input-text">
+        <br>
+        <input type="submit" id ="edit-submit" name="edit-submit" value="Update" class="submit">
+      </form>
+    </div>
+<!-- <p style='text-align:center' > <button id='edit-throne-btn'>Edit a Character!</button></p> -->
 
     <script type="text/javascript" src="src/index.js"></script>
   </body>
