@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 	POSTS_URL = 'http://localhost:3000/posts'
+	COMMENTS_URL = 'http://localhost:3000/comments'
 	COMMENTS = []
 //---------------------------------------------------------------------
 	const addBtn = document.querySelector('#new-throne-btn')
@@ -16,9 +17,18 @@ document.addEventListener('DOMContentLoaded', () => {
 		posts.forEach(showCharacterPosts)
 	}
 //---------------------------------------------------------------------
+function showComments(comments){
+	console.log('hit show comments', comments.text);
+	let ul = document.getElementById(`card-ul-${comments.post_id}`)
+
+	let seededLi = document.createElement('li')
+		seededLi.textContent = comments.text
+		ul.appendChild(seededLi)
+	}
+
+//-----------------------------------------------------------------
 	function showCharacterPosts(post){
-		// COMMENTS.push(post.comment)
-		// console.log("COMMENT:", post.comment);
+	// COMMENTS.push(post)
 		let topDiv = document.getElementById('throne-collection')
 
 		let postDiv = document.createElement('div')
@@ -40,13 +50,21 @@ document.addEventListener('DOMContentLoaded', () => {
 				postDiv.appendChild(div)
 
 				let ul = document.createElement('ul')
+				ul.setAttribute('id', `card-ul-${post.id}`)
 				ul.classList.add("list-group")
 					div.appendChild(ul)
 
 					let comment = document.createElement('li')
 						comment.setAttribute("id", `card-comment-${post.id}`)
 						comment.textContent = post.comment
-						ul.appendChild(comment)
+							console.log(comment)
+							ul.appendChild(comment)
+
+					let seededComments = document.createElement('p')
+						post.comments.forEach(showComments)
+						ul.appendChild(seededComments)
+
+
 
 //buttons//
 			let commentButton = document.createElement('mid_button')
@@ -107,13 +125,20 @@ function addNewCharacter(){
 }
 
 function addNewComment(post){
-	let div = document.getElementById('new-comment-container')
+	let div = document.createElement('div')
+		div.classList.add('new-comment-container')
 console.log("passing", );
-	let ul = document.getElementById('comment')
-	div.appendChild(ul)
-	let form = document.getElementById('comment-form')
+
+let form = document.createElement('form')
+	form.classList.add('comment-form')
 	form.addEventListener('submit', newCommentSubmit)
-	ul.appendChild(form)
+	div.appendChild(form)
+
+	// let ul = document.createElement('ul')
+	// ul.classList.add('textarea')
+	// div.appendChild(ul)
+
+
 }
 	// 	commentForm.name = post.id
 	// 	console.log(commentForm.name);
@@ -226,6 +251,8 @@ console.log("passing", );
 		getCharacters()
 		addNewCharacter()
 		addNewComment()
+		// getComments()
+		// dubGet()
 	}
 //---------------------------------------------------------------------
 	main()

@@ -1,11 +1,14 @@
 class CommentsController < ApplicationController
-	before_action :set_params, only: [:update]
+	before_action :set_params, only: [:update, :destroy]
 
 	def index
 		@comments = Comment.all
 		render json: @comments
 	end
-
+	def create
+		@comment = Post.create(comment_params)
+		render json: @comment
+	end
 	def update
 		@comment.update(comment_params)
 		if @comment.save
@@ -13,6 +16,11 @@ class CommentsController < ApplicationController
 		else
 			render json: { errors: @comment.errors.full_messages }, status: :unprocessible_entity
 		end
+	end
+
+	def destroy
+		puts @post
+		@post.destroy
 	end
 
 	private
