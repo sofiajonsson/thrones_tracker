@@ -18,14 +18,13 @@ document.addEventListener('DOMContentLoaded', () => {
 	}
 //---------------------------------------------------------------------
 function showComments(comments){
-	console.log('hit show comments', comments.text);
+	// console.log('hit show comments', comments.text);
 	let ul = document.getElementById(`card-ul-${comments.post_id}`)
 
 	let seededLi = document.createElement('li')
 		seededLi.textContent = comments.text
 		ul.appendChild(seededLi)
 	}
-
 //-----------------------------------------------------------------
 	function showCharacterPosts(post){
 	// COMMENTS.push(post)
@@ -57,23 +56,25 @@ function showComments(comments){
 					let comment = document.createElement('li')
 						comment.setAttribute("id", `card-comment-${post.id}`)
 						comment.textContent = post.comment
-							console.log(comment)
+							// console.log(comment)
 							ul.appendChild(comment)
 
 					let seededComments = document.createElement('p')
 						post.comments.forEach(showComments)
 						ul.appendChild(seededComments)
 
-
-
 //buttons//
 			let commentButton = document.createElement('mid_button')
+				commentButton.setAttribute("id", `button-${post.id}`)
 				commentButton.textContent = "Comment"
 				postDiv.appendChild(commentButton)
 
-				commentButton.addEventListener('click', () => {
-					addNewComment(post)
-					console.log(" new comment passed in:", post);
+				commentButton.addEventListener('click', (ev) => {
+					ev.preventDefault()
+					addNewComment(ev, post)
+					console.log("comment passed in:", post);
+					console.log(ev.target.id);
+					console.log(ev);
 				})
 
 			let deleteButton = document.createElement('right_button')
@@ -91,7 +92,7 @@ function showComments(comments){
 
 				editCardButton.addEventListener('click', () => {
 					editCharacterPost(post)
-					console.log(" edit passed in:", post);
+					// console.log(" edit passed in:", post);
 				})
 			//this line of code is to make the add character form dissappear
 			charcterPostForm.style.display = 'none'
@@ -122,59 +123,35 @@ function addNewCharacter(){
 	let newCharacterForm = document.getElementById('new-character')
 		newCharacterForm.addEventListener('submit', handleSubmit)
 		topDiv.appendChild(newCharacterForm)
+
 }
 
-function addNewComment(post){
-	let div = document.createElement('div')
-		div.classList.add('new-comment-container')
-console.log("passing", );
+function addNewComment(ev, post){
+// prevent default so it doesnt get cleared out instantly
+//click on comment and then enter comment info in input
+console.log(ev);
+console.log(post);
+debugger
+	let form = document.getElementById('comment-form')
+	 form.name = post.id
 
-let form = document.createElement('form')
-	form.classList.add('comment-form')
+
 	form.addEventListener('submit', newCommentSubmit)
-	div.appendChild(form)
 
-	// let ul = document.createElement('ul')
-	// ul.classList.add('textarea')
-	// div.appendChild(ul)
-
-
-}
-	// 	commentForm.name = post.id
-	// 	console.log(commentForm.name);
-	// 	commentForm.addEventListener('submit', newCommentSubmit )
-
-	// let ul = document.createElement('ul')
-	// 	topDiv.appendChild(ul)
-	//
-	// let li = document.createElement('li')
-	// 	ul.appendChild(li)
-	//
-	// let newComment = document.getElementById('new-comment-form')
-	// 	newComment.value = post.comment
-
-
-	//
-	// let newComment = document.createElement('textarea')
-	// newComment.classList.add('input-text')
-	// 	newComment.textContent = 'hello'
-	// 	li.appendChild(newComment)
-	// 	newComment.addEventListener('submit', newCommentSubmit )
-
-
+// console.log("new comment post");
+ }
 
 //---------------------------------------------------------------------
 	function deleteCharacterPost(id){
-		console.log(id);
+		// console.log(id);
 		fetch(POSTS_URL + '/' + id, {
 			method: 'DELETE'
 		})
-	 .then(console.log("Item successfully deleted"))
+	 // .then(console.log("Item successfully deleted"))
 	}
 
-
 	function editHandleSubmit(ev){
-		console.log("Edit Handle Submitted?")
+		// console.log("Edit Handle Submitted?")
 		ev.preventDefault()
 		fetch(POSTS_URL + '/' + ev.target.name , {
 		method: 'PATCH',
@@ -189,7 +166,7 @@ let form = document.createElement('form')
 		})
 		.then(res => res.json())
 		.then(res => {
-			console.log(res)
+			// console.log(res)
 			//give each element an attribute with an id so you can specifically
 			//target that card
 			//pessimistic rendering
@@ -200,9 +177,8 @@ let form = document.createElement('form')
 		// .then(json => showCharacterPosts(json))
 	}
 
-
 	function handleSubmit(ev){
-		console.log("New Character Submitted?")
+		// console.log("New Character Submitted?")
 		ev.preventDefault()
 		fetch(POSTS_URL, {
 		method: 'POST',
@@ -225,16 +201,29 @@ let form = document.createElement('form')
 	function newCommentSubmit(ev){
 		console.log("New Comment Submitted?")
 		ev.preventDefault()
-		fetch(POSTS_URL, {
-		method: 'PATCH',
+
+		let ul = document.getElementById(`card-ul-${ev.target.name}`)
+		console.log("ul", ul);
+		fetch(COMMENTS_URL, {
+		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json'
 		},
 		body: JSON.stringify({
-			comment: document.getElementById('add-comment-input').value
+			text: document.getElementById('add-comment-input').value,
+			post_id: ev.target.name
 			})
 		})
+
 		.then(res => res.json())
+		 .then(json => {
+			 // console.log(json);
+			 let li = document.createElement('li')
+			 	li.textContent = json.comment
+			 ul.appendChild(li)
+		 })
+		  document.getElementById('add-comment-input').value = ''
+		// .then(json => console.log(json))
 		// .then(json => showCharacterPosts(json))
 	}
 //---------------------------------------------------------------------
@@ -250,13 +239,7 @@ let form = document.createElement('form')
 	function main(){
 		getCharacters()
 		addNewCharacter()
-		addNewComment()
-		// getComments()
-		// dubGet()
 	}
 //---------------------------------------------------------------------
 	main()
 })
-
-//create another button and patch situation like the edit
-//change comments to be an array so i can iterate through
