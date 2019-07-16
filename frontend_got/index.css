@@ -1,0 +1,146 @@
+body {
+  margin: 0;
+  font-family: monospace;
+}
+
+#throne-header {
+  display: flex;
+  justify-content: center;
+  background: lightblue;
+  opacity: .8;
+  height: 7rem;
+  padding: 1rem;
+}
+img {
+  width: 200px;
+  height: 200px;
+}
+
+#throne-header img {
+  height: 7rem;
+  width: auto;
+}
+
+#throne-collection {
+  margin: 2rem;
+}
+
+.image {
+  width: 7rem;
+  height auto;
+
+}
+.card {
+  text-align: center;
+  border: grey solid 1px;
+  padding: 1rem;
+  width: 15rem;
+  height: 25rem;
+  display: inline-grid;
+  margin: 1rem 2rem;
+  box-shadow: 3px 4px lightblue
+}
+
+.editable {
+  text-align: left;
+  height: 4rem;
+  resize: both;
+  overflow: auto;
+}
+
+.throne-avatar {
+  justify-self: center;
+  height: 12rem;
+  width: auto;
+}
+mid_button {
+  position: relative;
+  background-color: grey;
+  border: none;
+  border-radius: 5px;
+  height: max-content;
+  width: max-content;
+  color: whitesmoke;
+  font-size: 18px;
+  justify-self: center;
+}
+
+left_button {
+  position: relative;
+  background-color: grey;
+  border: none;
+  border-radius: 5px;
+  height: max-content;
+  width: max-content;
+  color: whitesmoke;
+  font-size: 18px;
+  justify-self: center;
+}
+
+right_button {
+  position: relative;
+  background-color: grey;
+  border: none;
+  border-radius: 5px;
+  height: max-content;
+  width: max-content;
+  color: whitesmoke;
+  font-size: 18px;
+  justify-self: center;
+}
+
+button:hover {
+  background-color: whitesmoke;
+  border: black solid 1px;
+  color: grey;
+}
+
+.container {
+  padding: 1rem;
+  width: stretch;
+  height: auto;
+  display: none;
+  background: lightblue;
+  opacity: .8;
+}
+/* .edit-container {
+  padding: 1rem;
+  width: stretch;
+  height: auto;
+  display: none;
+  background: lightblue;
+  opacity: .8;
+} */
+
+.add-throne-form {
+  width: 80%
+}
+
+.submit {
+  position: relative;
+  background-color: grey;
+  border-radius: 5px;
+  height: 2rem;
+  width: max-content;
+  color: whitesmoke;
+  font-size: 18px;
+  justify-self: center;
+  font-family: monospace;
+  margin: 3px;
+}
+
+.submit:hover {
+  background-color: whitesmoke;
+  border: lightblue solid 1px;
+  color: grey;
+}
+
+
+.input-text {
+  border-radius: 5px;
+  height: 2rem;
+  width: 60%;
+  font-size: 18px;
+  font-family: monospace;
+  margin: 3px;
+}
