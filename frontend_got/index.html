@@ -6,13 +6,13 @@
 
     <link rel="stylesheet" href="index.css">
   </head>
-  <body>
 
+  <body>
     <div id='throne-header'>
       <img src="https://hottopic.scene7.com/is/image/HotTopic/GOT_Header_1100x180?wid=1100" alt="throne-header">
     </div>
 
-    </select>
+    <!-- </select> -->
     <div id="new-character-container" class="container">
       <form id = "new-character" class="add-throne-form" style="">
         <h3>Create a New Character Post!</h3>
@@ -25,27 +25,16 @@
         <input type="submit" name="submit" value="Add Character" class="submit">
       </form>
     </div>
+
     <p style='text-align:center' > Keep Speculating! <br> </br><button id='new-throne-btn'>Add a new Character!</button></p>
 
+    <div id="throne-collection"></div>
 
-    <div id="throne-collection">
-    </div>
-
- <!-- <h3>Create a New Comment!</h3> -->
- <!-- <div id= "new-comment" class="container">
-   <form id='new-comment-form' class="" method="post">
-
-   </form>
-   <input id='new-comment-input' type="text" name="new-comment" value="">
-   <button id='new-comment-btn' type="button" name="submit"></button>
-</div> -->
-
-          <form id="comment-form">
-            <label for="add-comment-input"> <h4>Create a New Comment</h4> </label>
-            <input class="form-control" type="text" id="add-comment-input" />
-            <button class="btn-btn-success-buttons" type="submit" >Create comment</button>
-          </form>
-
+      <form id="comment-form">
+        <label for="add-comment-input"> <h4>Create a New Comment</h4> </label>
+        <input class="form-control" type="text" id="add-comment-input" />
+        <button class="btn-btn-success-buttons" type="submit" >Create comment</button>
+      </form>
 
     <div id="edit-character-container" class="edit-container">
       <form id='edit-form' class="padding margin border-round border-grey">
@@ -59,7 +48,6 @@
         <input type="submit" id ="edit-submit" name="edit-submit" value="Update" class="submit">
       </form>
     </div>
-<!-- <p style='text-align:center' > <button id='edit-throne-btn'>Edit a Character!</button></p> -->
 
     <script type="text/javascript" src="src/index.js"></script>
   </body>

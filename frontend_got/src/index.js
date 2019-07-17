@@ -123,21 +123,17 @@ function addNewCharacter(){
 	let newCharacterForm = document.getElementById('new-character')
 		newCharacterForm.addEventListener('submit', handleSubmit)
 		topDiv.appendChild(newCharacterForm)
-
 }
 
 function addNewComment(ev, post){
 // prevent default so it doesnt get cleared out instantly
 //click on comment and then enter comment info in input
-console.log(ev);
-console.log(post);
-debugger
+// console.log(ev);
+// console.log(post);
+// debugger
 	let form = document.getElementById('comment-form')
-	 form.name = post.id
-
-
-	form.addEventListener('submit', newCommentSubmit)
-
+		form.name = post.id
+		form.addEventListener('submit', newCommentSubmit)
 // console.log("new comment post");
  }
 
