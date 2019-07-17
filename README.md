@@ -15,7 +15,10 @@
 * Run `rails s` in your server to start your local server
 * If you have the text editor add on: right click on the index.html folder
 	* Else run `open ./index.html` on your command line
-* The app can also be accessed on https://heroku.com/ADDWEBSITEHERE
+
+## Demo
+Please click on image to access YouTube video:
+[![Thrones_Tracker_Application](lib/art/got.png)](https://youtu.be/Rjdswq375Ms)
 
 ## Project Requirements
 For our third Project at the Flatiron School were challenged to:
